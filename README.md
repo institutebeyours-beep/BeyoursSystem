@@ -1,0 +1,66 @@
+Mi proyecto beyours - Sistema Multiusuario
+npm install-scripts approve esbuild
+php artisan storage:link
+Remove-Item (Get-PSReadLineOption).HistorySavePath
+powershell
+# Guarda este archivo como git-audimag.ps1 en tu proyecto
+# Ejecútalo desde PowerShell dentro de la carpeta del repo
+
+# Limpiar caché de storage para que Git reevalúe .gitignore
+git rm -r --cached storage
+
+# Agregar aud_imag y todo su contenido (forzado si estaba ignorado)
+git add -f storage/app/public/aud_imag
+
+# Commit automático con mensaje estándar
+git commit -m "Actualizando aud_imag y subcarpetas"
+
+# Push al remoto origin/main
+git push -u origin main
+Cómo usarlo
+Copia el bloque en un archivo llamado git-audimag.ps1 dentro de tu proyecto.
+
+Abre PowerShell en la carpeta del repo.
+
+Ejecuta:
+
+powershell
+.\git-audimag.ps1
+💡 Si quieres que el script sea más flexible (ej. subir todo storage/app/public y no solo aud_imag), cambia la línea:
+
+powershell
+git add -f storage/app/public
+
+
+# Script: subir-storage-public.ps1
+# Uso: ejecuta este script dentro de la carpeta raíz de tu proyecto
+
+Write-Host "🔹 Limpiando caché de Git para storage/app/public..."
+git rm -r --cached storage/app/public
+
+Write-Host "🔹 Forzando inclusión de storage/app/public..."
+git add storage/app/public -f
+
+Write-Host "🔹 Creando commit..."
+git commit -m "Incluyendo storage/app/public en el repositorio"
+
+Write-Host "🔹 Subiendo al remoto..."
+git push origin main
+
+Write-Host "✅ Proceso completado. Archivos de storage/app/public ahora están en el repo."
+
+quitar el link 
+$symlink = "public\\storage"
+
+if (Test-Path $symlink) {
+    Remove-Item $symlink -Force -Recurse
+    Write-Host "✅ Enlace simbólico/junction eliminado: $symlink"
+} else {
+    Write-Host "⚠️ No existe el enlace simbólico en $symlink"
+}
+git add .
+git commit -m "Actualizandocon auditoria con todo antes del manual"
+ git push -u origin main    
+
+
+ php artisan db:seed --class=RolesAndPermissionsSeeder         
